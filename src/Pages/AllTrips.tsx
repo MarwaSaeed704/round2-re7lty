@@ -49,7 +49,7 @@ const AllTrips: React.FC=()=> {
               </div>
 
               {/* show-trips-list */}
-              <div className='flex flex-nowrap overflow-x-auto space-x-4 max-sm:flex-wrap max-sm:overflow-x-visible gap-8 p-8 '>
+              <div className='flex gap-8 p-8  max-sm:flex-col'>
                   {tripsList.map((city,index) => 
                        (
                           

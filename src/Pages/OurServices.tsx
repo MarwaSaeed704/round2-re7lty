@@ -17,7 +17,7 @@ const OurServices:React.FC=()=> {
 
               {/* services */}
               <div className='flex relative p-10 pt-18 m-10 bg-[#F1EFFD] rounded-3xl max-sm:flex-col max-sm:gap-10 '>
-                  <img src={arrow3} alt='arrow3' className='absolute top-0 right-170 h-25 max-sm:right-75 max-sm:h-25'/>
+                  <img src={arrow3} alt='arrow3' className='absolute top-0 right-170 h-25 max-sm:right-60 max-sm:h-25'/>
                  
 
                   {/* service#1 */}

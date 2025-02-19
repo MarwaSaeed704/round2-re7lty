@@ -11,7 +11,7 @@ const TripsItem:React.FC<CityCardProps>=({cityImage,cityName, durationTime,cost}
   return (
       <>
           {/* city card */}
-          <div className=' max-sm:w-3/5'>
+          <div className=''>
               <div className=' relative '>
                   <img src={cityImage} className=''/>
                   <div className='absolute bottom-0 p-2 bg-white rounded-xl w-5/6 m-6'>

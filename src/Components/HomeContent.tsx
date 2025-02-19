@@ -33,7 +33,7 @@ const HomeContent:React.FC=()=> {
         {/*== button ==*/}
 
         {/* arrowr */}
-        <div className='w-1/8 main-shadow  mr-100 max-sm:mr-70 max-sm:w-2/8 '>
+        <div className='w-1/8 main-shadow  mr-100 max-sm:mr-60 max-sm:w-2/8 '>
           <img src={arrowr} />
         </div>
         {/*== arrowr ==*/}
@@ -41,7 +41,7 @@ const HomeContent:React.FC=()=> {
         {/* follow */}
         <div className=' text-center mb-50'>
           <p className='main-font main-shadow text-white text-[20px] font-bold'>تابع للأسفل</p>
-          <div className='w-full mr-75 max-sm:mr-25'><img src={mouse} className='' /></div>
+          <div className='w-full mr-75 max-sm:mr-20'><img src={mouse} className='' /></div>
         </div>
         {/*== follow ==*/}
 
