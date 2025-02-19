@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Navbar.css'
 import '../Styles/Styles.css'
 import { Link } from 'react-router-dom'
 import { BsYoutube } from "react-icons/bs";
 
 const Navbar: React.FC = () => {
+    const [scrolled, setScrolled] = useState(false);
     
+    useEffect(() => {
+
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        }
+    },[])
   return (
       <>
           {/* Navbar-section */}
-          <div dir='rtl' className='navbar-scrolled fixed  z-10   flex w-full p-4 justify-between max-sm:p-6 '>
+          {/* ' fixed  z-10   flex w-full p-4 justify-between max-sm:p-6 ' */}
+          <div dir='rtl' className={`${scrolled ? "navbar-scrolled":""} fixed  z-10   flex w-full p-4 justify-between max-sm:p-6`}>
               
               <div className='main-font text-white font-black text-[30px] max-sm:text-[16px] max-sm:font-blod'>
                   <span className=''>رحلاتي <span className='main-color'>.</span></span>
