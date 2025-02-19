@@ -28,11 +28,11 @@ const Navbar: React.FC = () => {
           {/* Navbar-section */}
           <div dir='rtl' className={`${scrolled ? "navbar-scrolled":""} fixed  z-10   flex w-full p-2 justify-between max-sm:p-4`}>
               
-              <div className='main-font text-white font-black text-[30px] max-sm:text-[16px] max-sm:font-blod'>
+              <div className='main-font text-white font-black text-[30px] max-sm:text-[15px] max-sm:font-blod'>
                   <span className=''>رحلاتي <span className='main-color'>.</span></span>
               </div>
 
-              <div className='grid grid-rows-1 grid-cols-5 gap-4 text-center main-font text-white font-blod text-[20px] max-sm:text-[12px]'>
+              <div className='grid grid-rows-1 grid-cols-5 gap-4 text-center main-font text-white font-blod text-[20px] max-sm:text-[11px]'>
                   <Link to="all-trips" className=' '>الرحلات</Link>
                   <Link to="our-services" className=''>الخدمات</Link>
                   <Link to="prices" className=''>الأسعار</Link>
@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
 
               <div className='flex gap-2 main-font text-center text-white font-blod text-[20px] max-sm:text-[0px]'>
                   <p className=''>يوتيوب</p>
-                  <BsYoutube className=' h-8 w-6'/>
+                  <BsYoutube className=' h-8 w-6 max-sm:h-6 max-sm:w-6'/>
               </div>
 
 
