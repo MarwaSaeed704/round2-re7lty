@@ -2,7 +2,46 @@
     box-shadow: 0px 8px 28px 0px #2525251A;
 }
 
+.navbar {
+
+}
+
 .navbar-scrolled{
     background-color: rgba(196, 87, 211, 0.4);
 
 }
+
+/* responsive */
+
+@media(max-width:980px){
+    .navbar , .youtube{
+        display: none;
+
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
+
+
+@media(min-width:980px) {
+
+    .menu-icon {
+        display: none;
+
+    }
+}
+
+
+.sidebar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* height: 100vh; */
+   
+}
+
+
+

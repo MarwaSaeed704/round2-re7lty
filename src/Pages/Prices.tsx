@@ -38,13 +38,13 @@ const Prices: React.FC = () => {
       <>
           {/* prices-section */}
           <div className='p-10 '>
-              <div className='p-4 mb-10'>
-                  <p className='main-font font-black text-[#A5A5A5] text-[24px] max-sm:text-[16px]'>لا تقلق حول التكلفة</p>
-                  <h2 className='main-font font-black text-[#191919] text-[48px] max-sm:text-[24px]'>خطط تناسب ميزانيتك</h2>
+              <div className='p-4 mb-10 '>
+                  <p className='main-font font-black text-[#A5A5A5] text-[24px] max-md:text-[15px]'>لا تقلق حول التكلفة</p>
+                  <h2 className='main-font font-black text-[#191919] text-[48px] max-md:text-[20px]'>خطط تناسب ميزانيتك</h2>
               </div>
 
               {/* price-cards */}
-              <div className='flex w-full flex-row gap-10 max-sm:flex-col'>
+              <div className='flex w-full flex-row gap-10 max-md:flex-col max-lg:flex-col'>
                   {pricePlanList.map((plan, index) => {
                       return (
                           <PriceCard

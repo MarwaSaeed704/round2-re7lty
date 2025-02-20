@@ -10,7 +10,7 @@ const HomeContent:React.FC=()=> {
   return (
     <>
       {/* home-content */}
-      <div className='home-content mt-50'>
+      <div className='home-content max-sm:w-full max-md:w-full max-lg:w-5/6 max-xl:w-4/6 mt-50'>
         <h2
           className='main-font main-shadow text-white tracking-[-2%] font-black text-[68px] text-center w-full  p-2 max-sm:text-[40px]'>
           سافر معنا إلى العالم
@@ -24,7 +24,7 @@ const HomeContent:React.FC=()=> {
        {/* button */}
         <div className='text-center mt-10'>
            <button
-          className='relative cursor-pointer main-background main-font main-shadow font-bold text-[18px] w-1/4 p-2  rounded-lg max-sm:w-3/4'>
+          className='relative cursor-pointer main-background main-font main-shadow font-bold text-[18px] w-1/4 p-2  rounded-lg  max-sm:w-3/4'>
             <span>احجز الآن</span>
             <img src={arrowl} className='absolute top-2 left-4  h-8  w-8 p-1'/>
           {/* <IoIosArrowDropleftCircle  /> */}
@@ -33,15 +33,15 @@ const HomeContent:React.FC=()=> {
         {/*== button ==*/}
 
         {/* arrowr */}
-        <div className='w-1/8 main-shadow  mr-100 max-sm:mr-60 max-sm:w-2/8 '>
-          <img src={arrowr} />
+        <div className='arrowr w-1/8 main-shadow  mr-100 max-sm:mr-70 max-sm:w-2/8 '>
+          <img src={arrowr} className='w-full'/>
         </div>
         {/*== arrowr ==*/}
 
         {/* follow */}
         <div className=' text-center mb-50'>
           <p className='main-font main-shadow text-white text-[20px] font-bold'>تابع للأسفل</p>
-          <div className='w-full mr-75 max-sm:mr-20'><img src={mouse} className='' /></div>
+          <div className='w-full mr-75 max-sm:mr-35'><img src={mouse} className='' /></div>
         </div>
         {/*== follow ==*/}
 

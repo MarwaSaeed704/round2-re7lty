@@ -17,3 +17,19 @@
     text-align: center;
     
 }
+
+
+/* response */
+@media(max-width:980px) {
+
+    .home-section {
+        height: 200vh;
+        width: 100%;
+
+    }
+}
+
+@media(max-width:980px) {
+
+    
+}

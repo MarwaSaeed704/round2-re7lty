@@ -44,13 +44,15 @@ const AllTrips: React.FC=()=> {
           {/* all-trips-section */}
           <div >
               <div className='p-12 mt-8'>
-                  <p className='main-font second-color font-black text-[24px] max-sm:text-[16px]'>قم بزيارة العالم</p>
-                  <h2 className='main-font h-color font-black text-[48px] max-sm:text-[24px]'>الرحلات التي نقدمها</h2>
+                  <p className='main-font second-color font-black text-[24px] max-md:text-[16px]'>قم بزيارة العالم</p>
+                  <h2 className='main-font h-color font-black text-[48px] max-md:text-[24px]'>الرحلات التي نقدمها</h2>
               </div>
 
               {/* show-trips-list */}
-              <div className='flex gap-8 p-8  max-sm:flex-col'>
-                  {tripsList.map((city,index) => 
+              <div className='flex max-md:justify-center max-md:items-center  max-lg:justify-center max-lg:items-center'>
+                  <div className='w-full max-md:overflow-x-auto md:overflow-x-auto md:overflow-visible sm:overflow-visible whitespace-nowrap p-4 ' >
+                      <div className='flex space-x-8 max-lg:space-x-4 max-md:space-x-4'>
+                         {tripsList.map((city,index) => 
                        (
                           
                           <TripsItem
@@ -61,7 +63,9 @@ const AllTrips: React.FC=()=> {
                                 cost={city.cost}
                               />
                       )
-                  ) }
+                  ) }    
+                   </div>
+                  </div>
                   
               </div>
               {/*== show-trips-list ==*/}
