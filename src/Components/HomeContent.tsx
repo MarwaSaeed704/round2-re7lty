@@ -10,7 +10,7 @@ const HomeContent:React.FC=()=> {
   return (
     <>
       {/* home-content */}
-      <div className='home-content  max-sm:w-full max-md:w-full max-lg:w-5/6 max-xl:w-4/6 mt-50'>
+      <div className='home-content  max-sm:w-full max-md:w-full max-lg:w-5/6 max-xl:w-4/6 mt-50 max-md:mt-35  max-lg:mt-40'>
         <h2
           className='main-font main-shadow text-white tracking-[-2%] font-black text-[68px] text-center w-full  p-2 max-sm:text-[40px]'>
           سافر معنا إلى العالم
