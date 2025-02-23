@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { BsYoutube } from "react-icons/bs";
 import { IoMdMenu } from "react-icons/io";
 import Sidebarlink from './Sidebarlink';
+import logoImg from '../assets/رحلاتي ..png'
 
 
 const Navbar: React.FC = () => {
@@ -34,10 +35,10 @@ const Navbar: React.FC = () => {
   return (
       <>
           {/* Navbar-section */}
-          <div dir='rtl' className={`${scrolled ? "navbar-scrolled":""} fixed  z-10   flex w-full p-6 justify-between max-sm:p-4 max-w-md:relative`}>
+          <div dir='rtl' className={`${scrolled ? "navbar-scrolled":""} fixed  z-10   flex w-full p-5 justify-between max-sm:p-4`}>
               
-              <div className='main-font text-white font-black text-[30px] max-sm:text-[26px] '>
-                  <span className='relative'>رحلاتي <span className='main-color absolute right-22 max-sm:right-20'>.</span></span> 
+              <div className=''>
+                  <img src={logoImg} alt='logo img' className='w-30' />
               </div>
 
               <div
@@ -47,8 +48,8 @@ const Navbar: React.FC = () => {
                   <Link to="all-trips" className=' '>الرحلات</Link>
                   <Link to="our-services" className=''>الخدمات</Link>
                   <Link to="prices" className=''>الأسعار</Link>
-                  <Link to="" className=''>آراء العملاء</Link>
-                  <Link to="" className=''> اتصل بنا</Link>                               
+                  <Link to="customer-review" className=''>آراء العملاء</Link>
+                  <Link to="contact-us" className=''> اتصل بنا</Link>                               
               </div>
               
               {/* youtube-part */}

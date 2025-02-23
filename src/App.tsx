@@ -6,6 +6,8 @@ import HomePage from './Pages/HomePage'
 import AllTrips from './Pages/AllTrips'
 import OurServices from './Pages/OurServices'
 import Prices from './Pages/Prices'
+import CustomerReview from './Pages/CustomerReview'
+import ContactUs from './Pages/ContactUs'
 
 function App() {
   
@@ -18,7 +20,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path='all-trips' element={<AllTrips />} />
             <Route path='our-services' element={<OurServices />} />
-            <Route path='prices' element={<Prices/>} />
+            <Route path='prices' element={<Prices />} />
+            <Route path='customer-review' element={<CustomerReview />} />
+            <Route path='contact-us' element={<ContactUs/>} />
           </Route>
           
         </Routes>

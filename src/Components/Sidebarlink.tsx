@@ -15,8 +15,8 @@ const Sidebarlink:React.FC=()=> {
                <Link to="all-trips" className=' '>الرحلات</Link>
                 <Link to="our-services" className=''>الخدمات</Link>
                 <Link to="prices" className=''>الأسعار</Link>
-                <Link to="" className=''>آراء العملاء</Link>
-              <Link to="" className=''> اتصل بنا</Link>  
+                <Link to="customer-review" className=''>آراء العملاء</Link>
+              <Link to="contact-us" className=''> اتصل بنا</Link>  
               <Link to =""><BsYoutube className=' h-8 w-6 m-auto'/></Link>
           </nav>
       </>
