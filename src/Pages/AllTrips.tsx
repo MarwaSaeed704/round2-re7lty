@@ -1,34 +1,34 @@
-// import React, { useEffect, useState } from 'react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import '../Styles/Styles.css'
 import TripsItem from '../Components/TripsItem'
 import istanbolImg from '../assets/istanbol.png'
 import dubaiImg from '../assets/dubai.png'
 import cairoImg from '../assets/cairoImg.png'
 import riyadahImg from '../assets/riyadahImg.png'
-// import axios from 'axios'
+import axios from 'axios'
 
 
 const AllTrips: React.FC = () => {
     
-    // const [trips, setTrips] = useState([{
-    //             "id": 2,
-    //             "location": "الإسكندرية",
-    //             "price": "1800.00",
-    //             "duration_days": 3,
-    //             "image": "trips/alex.jpg",
-    // }])
+    const [trips, setTrips] = useState([{
+                "id": 2,
+                "location": "الإسكندرية",
+                "price": "1800.00",
+                "duration_days": 3,
+                "image": "trips/alex.jpg",
+    }])
     
 
-    // const getTrips = async () => {
-    //     const response = await axios.get("https://re7lty-3.digital-vision-solutions.com/api/trips");
-    //     console.log(response.data.data.id);
+    const getTrips = async () => {
+        const response = await axios.get("https://re7lty-3.digital-vision-solutions.com/api/trips");
+        console.log(response.data.data);
         
-    // }
+    }
 
-    // useEffect(() => {
-    //     getTrips();
-    // },[])
+    useEffect(() => {
+        getTrips();
+    },[])
 
     const tripsList = [
         {
