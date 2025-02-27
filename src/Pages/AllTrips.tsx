@@ -1,48 +1,61 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Styles.css'
 import TripsItem from '../Components/TripsItem'
-import istanbolImg from '../assets/istanbol.png'
-import dubaiImg from '../assets/dubai.png'
-import cairoImg from '../assets/cairoImg.png'
-import riyadahImg from '../assets/riyadahImg.png'
+import axios  from 'axios'
+import { CityCardProps } from '../Components/TripsItem'
 
 
 
 const AllTrips: React.FC = () => {
+
     
     
+    const [trips, setTrips] = useState<CityCardProps[]>([]);
 
-    const tripsList = [
-        {
-            cityImage: istanbolImg,
-            cityName: "اسطنبول",
-            durationTime: "5 أيام ",
-            cost:"1,500 دولار",
-        },
+    const [error, setError] = useState<string|null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
-        {
-            cityImage: dubaiImg ,
-            cityName: "دبي",
-            durationTime: "5 أيام ",
-            cost:"1,500 دولار",
-        },
+    
 
-        {
-            cityImage: cairoImg,
-            cityName: "القاهرة",
-            durationTime: "5 أيام ",
-            cost:"1,500 دولار",
-        },
-
-        {
-            cityImage: riyadahImg,
-            cityName: "الرياض",
-            durationTime: "5 أيام ",
-            cost:"1,500 دولار",
-        },
+   
         
-    ] 
+    
+        
+    
+    const getTrips = async () => {
+
+          try {
+            const response = await axios.get("https://re7lty-2.digital-vision-solutions.com/api/trips");
+            const transformedTrips = response.data.data.data.map((trip: CityCardProps) => ({
+                id: trip.id,
+                name: trip.name,
+                coast: trip.coast,
+                number_of_days: trip.number_of_days,
+                image: trip.image,
+            }));
+              
+              setTrips(transformedTrips);
+             
+              
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+            setError("حدث خطأ أثناء جلب البيانات.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+       
+    
+    useEffect(() => {
+
+        getTrips(); 
+ 
+    },[])
+
+    
+    
 
   return (
       <>
@@ -57,18 +70,20 @@ const AllTrips: React.FC = () => {
               <div className='flex max-md:justify-center max-md:items-center  max-lg:justify-center max-lg:items-center'>
                   <div className='w-full max-md:overflow-x-auto md:overflow-x-auto md:overflow-visible sm:overflow-visible whitespace-nowrap p-4 ' >
                       <div className='flex space-x-8 max-lg:space-x-4 max-md:space-x-4'>
-                         {tripsList.map((city,index) => 
-                       (
+                         {trips.length> 0 ? trips.map((city) => 
+                         (                           
                           
                           <TripsItem
-                                key={index}
-                                cityImage={city.cityImage}
-                                cityName={city.cityName}
-                                durationTime={city.durationTime}
-                                cost={city.cost}
+                                 key={city.id}
+                                 id={city.id}
+                                 name={city.name}
+                                 coast={city.coast}
+                                 number_of_days={city.number_of_days}
+                                 image={city.image}
                               />
-                      )
-                  ) }    
+                         )
+                             
+                  ) :<p>⏳ تحميل الرحلات...</p>}    
                    </div>
                   </div>
                   

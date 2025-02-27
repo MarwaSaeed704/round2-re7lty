@@ -1,10 +1,75 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../Styles/Styles.css'
 import helpIcon from '../assets/helpIcon.png'
 import communicationIcon from '../assets/communicationIcon.png'
 import workingHoursIcon from '../assets/working-hours-icon.png'
+import axios from 'axios'
 
-const ContactUs:React.FC=()=> {
+interface FormData {
+       
+        name: string,
+        email: string,
+        subject:string,
+    }
+
+const ContactUs: React.FC = () => {
+
+    
+
+    const [formData, setFormData] = useState<FormData>(
+        {
+            name: "",
+            email: "",
+            subject:"",
+        }
+    );
+
+    const [loading, setLoading] = useState<boolean>(false);
+    const [message, setMessage] = useState("");
+
+    //تحديث البيانات عند الادخال
+    const handleChangeData = (e:React.ChangeEvent<HTMLInputElement>) => {
+
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+        
+        
+    }
+
+    //ارسال البيانات الي ال api
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setMessage("");
+
+        try {
+            const response = await axios.post("https://re7lty-3.digital-vision-solutions.com/api/contacts", formData);
+            setMessage("تم ارسال البيانات بنجاح");
+            console.log(response);
+
+            //تفريغ ال form بعد ارسال البيانات
+            setFormData(
+                {
+                    name: "",
+                    email: "",
+                    subject: "",
+                }
+            );
+
+        } catch (error) {
+            setMessage(" حدث خطا في ارسال البيانات !!!!")
+            
+        } finally {
+            setLoading(false);
+        }
+        
+        
+    }
+
+
+
   return (
       <>
           {/* contact-us-section */}
@@ -21,14 +86,23 @@ const ContactUs:React.FC=()=> {
                   
                   {/* contact-form */}
                   <div className='mt-4 p-8  bg-[#FFE7AC] border-solid border-[1.5px] border-[#191919] rounded-xl shadow-xl '>
-                      {/* name */}
+                      
+                      {message && <p className='text-center text-red-600 pb-4'>{ message}</p>}
+                      <form onSubmit={handleSubmit}>
+                          
+                          {/* name */}
                       <div className='mb-4'>
                           <label htmlFor='name' className='font-black text-[24px] text-[#191919] tracking-tighter max-md:text-[20px]'>
                           الاسم
                       </label>
                       <input
-                          type='text'
-                          id='name' name='name' placeholder='يرجى تسجيل اسمك الكامل'
+                            type='text'
+                              id='name'
+                              name='name'
+                              value={formData.name}
+                              placeholder='يرجى تسجيل اسمك الكامل'
+                              onChange={handleChangeData}
+                              required
                           className='w-full bg-white font-[400] text-[18px] text-[#A5A5A5] rounded-lg p-2  border-solid border-[1.5px] border-[#191919] '
                       />
                       </div>
@@ -40,8 +114,13 @@ const ContactUs:React.FC=()=> {
                           البريد الإلكتروني
                       </label>
                       <input
-                          type='email'
-                          id='email' name='email' placeholder='سجل بريدك الشخصي'
+                             type='email'
+                              id='email'
+                              name='email'
+                              value={formData.email}
+                              placeholder='سجل بريدك الشخصي'
+                              onChange={handleChangeData}
+                              required
                           className='w-full bg-white font-[400] text-[18px] text-[#A5A5A5] rounded-lg p-2  border-solid border-[1.5px] border-[#191919] '
                       />
                       </div>
@@ -53,18 +132,30 @@ const ContactUs:React.FC=()=> {
                            الموضوع
                       </label>
                       <input
-                          type='text'
-                          id='subject' name='subject' placeholder='ما هو السؤال أو المشكلة التي لديك؟'
+                             type='text'
+                              id='subject'
+                              name='subject'
+                              value={formData.subject}
+                              placeholder='ما هو السؤال أو المشكلة التي لديك؟'
+                              onChange={handleChangeData}
+                              required
                           className='w-full bg-white font-[400] text-[18px] text-[#A5A5A5] rounded-lg p-2  border-solid border-[1.5px] border-[#191919] h-20'
                       />
                       </div>
                       {/*== subject ==*/}
 
                       {/* button */}
-                      <button className=' cursor-pointer mt-4 mb-4 main-shadow p-2 w-50 font-bold text-[18px] text-white bg-[#191919] rounded-lg'>
-                          أرسل الرسالة
+                      <button
+                              type='submit'
+                              disabled={loading}
+                          className=' cursor-pointer mt-4 mb-4 main-shadow p-2 w-50 font-bold text-[18px] text-white bg-[#191919] rounded-lg'>
+                               
+                              {loading ? "جاري الارسال ...":"ارسل الرساله"}
                       </button>
                       {/* button */}
+                          
+                      </form>
+                      
                       
                   </div>
                   {/*== contact-form ==*/}

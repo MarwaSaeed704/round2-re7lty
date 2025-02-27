@@ -1,42 +1,68 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Styles.css'
-import customer1 from '../assets/customer1.png'
-import customer2 from '../assets/customer2.png'
-import customer3 from '../assets/customer3.png'
 import arrow02 from '../assets/arrow02.png'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import CustomerReviewElement from '../Components/CustomerReviewElement';
+import CustomerReviewElement, { CustomerReviewElementProps } from '../Components/CustomerReviewElement';
+import axios from 'axios'
 
 const CustomerReview: React.FC = () => {
-    interface CustomerInfo{
-        customerImage: string,
-        customerName: string,
-        customerReview:string,
+    const [customerReview, setCustomerReview] = useState<CustomerReviewElementProps[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const getCustomerReview = async () => {
+        try {
+            const response = await axios.get("https://re7lty-3.digital-vision-solutions.com/api/reviews");
+            const transformedResponse = response.data.data.data.map((customer: CustomerReviewElementProps) => (
+                {
+                    id: customer.id,
+                    user_id: customer.user_id,
+                    name: customer.name,
+                    content: customer.content,
+                    image: customer.image,
+                    rating: customer.rating,
+                }
+            ))
+
+            setCustomerReview(transformedResponse);
+            
+        } catch (error) {
+            setError("حدث خطأ أثناء جلب البيانات.");
+            
+        } finally {
+            setLoading(false);
+        }
+        
     }
 
-    const customerList: CustomerInfo[] = [
-        {
-            customerImage: customer1,
-            customerName: "محمد الأحمد",
-            customerReview:" كانت تجربة مميزة مع خدمات رائعة قضيت أفضل إجازة لي من فترة طويلة، أنصح بالتعامل مع شركة رحلاتي بدون تردد. "
+    useEffect(() => {
+        getCustomerReview();
+    },[])
 
-        },
+    // const customerList: CustomerInfo[] = [
+    //     {
+    //         customerImage: customer1,
+    //         customerName: "محمد الأحمد",
+    //         customerReview:" كانت تجربة مميزة مع خدمات رائعة قضيت أفضل إجازة لي من فترة طويلة، أنصح بالتعامل مع شركة رحلاتي بدون تردد. "
 
-        {
-            customerImage: customer2,
-            customerName: " ماهر عبد اللطيف",
-            customerReview:" تقدم شركة رحلاتي خدمات مناسبة جداً لرجال الأعمال، هذا ما ساعدني في رحلتي وجعلني اختصر جداً من مشاكل الحجوزات. "
+    //     },
 
-        },
+    //     {
+    //         customerImage: customer2,
+    //         customerName: " ماهر عبد اللطيف",
+    //         customerReview:" تقدم شركة رحلاتي خدمات مناسبة جداً لرجال الأعمال، هذا ما ساعدني في رحلتي وجعلني اختصر جداً من مشاكل الحجوزات. "
 
-        {
-            customerImage: customer3,
-            customerName: " أسامة الأبيض",
-            customerReview:" يمكنني القول إنني قمت بقطاء أفضل رحلة عائلة على الإطلاق، كان الفنادق رائعة وخطة السفر ممتازة جداً ومريحة. "
+    //     },
 
-        },
-    ];
+    //     {
+    //         customerImage: customer3,
+    //         customerName: " أسامة الأبيض",
+    //         customerReview:" يمكنني القول إنني قمت بقطاء أفضل رحلة عائلة على الإطلاق، كان الفنادق رائعة وخطة السفر ممتازة جداً ومريحة. "
+
+    //     },
+    // ];
+
   return (
       <>
           {/* customer-review-container */}
@@ -67,15 +93,19 @@ const CustomerReview: React.FC = () => {
                   
                   {/* customer-review-elements */}
               <div className='w-full flex flex-row gap-8 max-md:flex-col max-lg:flex-col'>
-                  {customerList.map((customer, index) => {
+                  {customerReview.length>0 ? customerReview.map((customer) => {
                       return (
                           <CustomerReviewElement
-                              key={index}
-                              customerImage={customer.customerImage}
-                              customerName={customer.customerName}
-                              customerReview={customer.customerReview}
+                              key={customer.id}
+                              id={customer.id}
+                              user_id={customer.user_id}
+                              name={customer.name}
+                              content={customer.content}
+                              image={customer.image}
+                              rating={customer.rating}
+                              
                           />
-                  )})}
+                  )}): <p>⏳ تحميل ...</p>}
                   
               </div>
                   {/*== customer-review-elements ==*/}

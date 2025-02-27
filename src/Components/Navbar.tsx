@@ -38,7 +38,10 @@ const Navbar: React.FC = () => {
           <div dir='rtl' className={`${scrolled ? "navbar-scrolled":""} fixed  z-10   flex w-full p-5 justify-between max-sm:p-4`}>
               
               <div className=''>
-                  <img src={logoImg} alt='logo img' className='w-30' />
+                  <Link to='home'>
+                       <img src={logoImg} alt='logo img' className='w-30' />
+                  </Link>
+                 
               </div>
 
               <div

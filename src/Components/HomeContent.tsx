@@ -12,11 +12,11 @@ const HomeContent:React.FC=()=> {
       {/* home-content */}
       <div className='home-content  max-sm:w-full max-md:w-full max-lg:w-5/6 max-xl:w-4/6 mt-50 max-md:mt-35  max-lg:mt-40'>
         <h2
-          className='main-font main-shadow text-white tracking-[-2%] font-black text-[68px] text-center w-full  p-2 max-sm:text-[40px]'>
+          className='main-font  text-white tracking-[-2%] font-black text-[68px] text-center w-full  p-2 max-sm:text-[40px]'>
           سافر معنا إلى العالم
         </h2>
         <p
-          className='main-font main-shadow font-medium text-[24px] tracking-[-2%] text-white text-center w-full max-sm:text-[20px]'>
+          className='main-font  font-medium text-[24px] tracking-[-2%] text-white text-center w-full max-sm:text-[20px]'>
           نوفر لك أفضل الرحلات التي تحتاجها لجميع البلدان
 وبخدمات مخصصة لك ولعائلتك
         </p>

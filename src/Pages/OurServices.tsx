@@ -1,11 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Styles.css'
-import travel_v1 from '../assets/travel_v1_9.png'
-import travelv210 from '../assets/travelv210.png'
-import travel203 from '../assets/travel203.png'
 import arrow3 from '../assets/arrow3.png'
+import ServicesCard, { ServicesCardProps } from '../Components/ServicesCard'
+import axios from 'axios'
 
-const OurServices:React.FC=()=> {
+const OurServices: React.FC = () => {
+
+    const [ourServices, setOurServices] = useState<ServicesCardProps[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<null | string>(null);
+
+    const getServices = async () => {
+        try {
+
+            const response = await axios.get("https://re7lty-2.digital-vision-solutions.com/api/showservices");
+            // console.log(response.data.data);
+            const transformedResponse = response.data.data.map((service: ServicesCardProps) => (
+                {
+                    id: service.id,
+                    service_name: service.service_name,
+                    image: service.image,
+                    description: service.description,
+                }
+            ));
+
+            setOurServices(transformedResponse);
+            
+
+            
+            
+        } catch (error) {
+            setError("حدث خطأ أثناء جلب البيانات.");
+            
+        } finally {
+            setLoading(false);
+        }
+    
+        
+    }
+
+
+    useEffect(() => {
+        getServices();
+    },[])
+    
+    
   return (
       <>
           {/* ourservices-section */}
@@ -20,47 +59,19 @@ const OurServices:React.FC=()=> {
                   <img src={arrow3} alt='arrow3' className='absolute top-0 right-170 h-23 max-lg:right-100 max-md:right-47 max-md:h-22'/>
                  
 
-                  {/* service#1 */}
-                  <div className=' '>
-                      <img src={travel_v1} className='w-2/6 m-auto max-md:w-3/6 max-lg:w-3/6' />
-                      <div className='w-4/6 m-auto text-center max-md:w-5/6 max-lg:w-full'>
-                            <h3 className='main-font text-[#191919] font-black text-[24px] tracking-[-2%] max-md:text-[20px]'>دليل سياحي</h3>
-                            <p className='main-font text-[#4C4C4C] font-[400] text-[18px] tracking-[-3%] max-md:text-[17px]'>
-                                نقدم لك خدمات الإرشاد السياحي لبناء
-                                خطط سفر مميزة.
-                            </p>
-                     </div>
-                      
-                  </div>
-                  {/*== service#1 ==*/}
+                  {ourServices.length>0 ? ourServices.map((service) => (
+                      <ServicesCard
+                          key={service.id}
+                          id={service.id}
+                          service_name={service.service_name}
+                          image={service.image}
+                          description={service.description}
+                      />
+                  )) : <p>⏳ تحميل ...</p>}
+
+                  {/* {error && <p> {error} </p>} */}
+                  {/* {loading && <p> ⏳ تحميل ... </p>} */}
                   
-                   {/* service#2 */}
-                  <div className=' '>
-                      <img src={travelv210} className='w-2/6 m-auto max-md:w-3/6 max-lg:w-3/6' />
-                      <div className='w-4/6 m-auto text-center max-md:w-5/6 max-lg:w-full'>
-                            <h3 className='main-font text-[#191919] font-black text-[24px] tracking-[-2%] max-sm:text-[20px]'>دليل سياحي</h3>
-                            <p className='main-font text-[#4C4C4C] font-[400] text-[18px] tracking-[-3%] max-sm:text-[17px]'>
-                                نقدم لك خدمات الإرشاد السياحي لبناء
-                                خطط سفر مميزة.
-                            </p>
-                     </div>
-                      
-                  </div>
-                  {/*== service#2 ==*/}
-                  
-                   {/* service#3 */}
-                  <div className=' '>
-                      <img src={travel203} className='w-2/6 m-auto max-md:w-3/6 max-lg:w-3/6' />
-                      <div className='w-4/6 m-auto text-center max-md:w-5/6 max-lg:w-full'>
-                            <h3 className='main-font text-[#191919] font-black text-[24px] tracking-[-2%] max-sm:text-[20px]'>رحلات ميدانية</h3>
-                            <p className='main-font text-[#4C4C4C] font-[400] text-[18px] tracking-[-3%] max-sm:text-[17px]'>
-                                لن تكون إجازتك مملة معنا فهنا الكثير
-                                من الخطط والرحلات المختلفة.
-                            </p>
-                     </div>
-                      
-                  </div>
-                  {/*== service#3 ==*/}
                   
               </div>
               {/*== services ==*/}
