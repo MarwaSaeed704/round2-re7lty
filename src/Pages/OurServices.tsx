@@ -11,6 +11,8 @@ const OurServices: React.FC = () => {
     const [error, setError] = useState<null | string>(null);
 
     const getServices = async () => {
+        console.log(loading);
+        console.log(error);
         try {
 
             const response = await axios.get("https://re7lty-2.digital-vision-solutions.com/api/showservices");

@@ -24,6 +24,8 @@ const AllTrips: React.FC = () => {
         
     
     const getTrips = async () => {
+        console.log(error);
+        console.log(loading);
 
           try {
             const response = await axios.get("https://re7lty-2.digital-vision-solutions.com/api/trips");
@@ -40,7 +42,8 @@ const AllTrips: React.FC = () => {
               
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-            setError("حدث خطأ أثناء جلب البيانات.");
+              setError("حدث خطأ أثناء جلب البيانات.");
+              
         } finally {
             setLoading(false);
         }

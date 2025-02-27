@@ -12,6 +12,8 @@ const CustomerReview: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const getCustomerReview = async () => {
+        console.log(loading);
+        console.log(error);
         try {
             const response = await axios.get("https://re7lty-3.digital-vision-solutions.com/api/reviews");
             const transformedResponse = response.data.data.data.map((customer: CustomerReviewElementProps) => (
@@ -40,28 +42,7 @@ const CustomerReview: React.FC = () => {
         getCustomerReview();
     },[])
 
-    // const customerList: CustomerInfo[] = [
-    //     {
-    //         customerImage: customer1,
-    //         customerName: "محمد الأحمد",
-    //         customerReview:" كانت تجربة مميزة مع خدمات رائعة قضيت أفضل إجازة لي من فترة طويلة، أنصح بالتعامل مع شركة رحلاتي بدون تردد. "
-
-    //     },
-
-    //     {
-    //         customerImage: customer2,
-    //         customerName: " ماهر عبد اللطيف",
-    //         customerReview:" تقدم شركة رحلاتي خدمات مناسبة جداً لرجال الأعمال، هذا ما ساعدني في رحلتي وجعلني اختصر جداً من مشاكل الحجوزات. "
-
-    //     },
-
-    //     {
-    //         customerImage: customer3,
-    //         customerName: " أسامة الأبيض",
-    //         customerReview:" يمكنني القول إنني قمت بقطاء أفضل رحلة عائلة على الإطلاق، كان الفنادق رائعة وخطة السفر ممتازة جداً ومريحة. "
-
-    //     },
-    // ];
+    
 
   return (
       <>
