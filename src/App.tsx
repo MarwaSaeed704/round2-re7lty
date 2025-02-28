@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import HomePage from './Pages/HomePage'
@@ -8,25 +8,30 @@ import OurServices from './Pages/OurServices'
 import Prices from './Pages/Prices'
 import CustomerReview from './Pages/CustomerReview'
 import ContactUs from './Pages/ContactUs'
+import Footer from './Pages/Footer'
 
 function App() {
   
 
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route path='/' element={<HomePage />}>
-            <Route index path='home' element={<Home />} />
-            <Route path='all-trips' element={<AllTrips />} />
-            <Route path='our-services' element={<OurServices />} />
-            <Route path='prices' element={<Prices />} />
-            <Route path='customer-review' element={<CustomerReview />} />
-            <Route path='contact-us' element={<ContactUs/>} />
-          </Route>
-          
+          <Route path='/' element={
+            <div dir='rtl'>
+              <div id='home'> <Home /> </div>
+              <div id='all-trips'> <AllTrips /> </div>
+              <div id='our-services' > <OurServices />  </div>
+              <div id='prices'> <Prices /> </div>
+              <div id='customer-review'> <CustomerReview /> </div>
+              <div id='contact-us' > <ContactUs /> </div> 
+              <div id='footer'> <Footer/> </div>
+            </div>
+          }/>
+
         </Routes>
-      </BrowserRouter>
+        
+      </Router>
     </>
   )
 }

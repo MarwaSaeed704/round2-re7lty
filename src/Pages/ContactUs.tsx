@@ -25,7 +25,8 @@ const ContactUs: React.FC = () => {
     );
 
     const [loading, setLoading] = useState<boolean>(false);
-    const [message, setMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
 
     //تحديث البيانات عند الادخال
     const handleChangeData = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -42,11 +43,12 @@ const ContactUs: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        setMessage("");
+        setErrorMessage("");
+        setSuccessMessage("");
 
         try {
-            const response = await axios.post("https://re7lty-3.digital-vision-solutions.com/api/contacts", formData);
-            setMessage("تم ارسال البيانات بنجاح");
+            const response = await axios.post("https://re7lty-2.digital-vision-solutions.com/api/contact", formData);
+            setSuccessMessage("✅تم ارسال البيانات بنجاح");
             console.log(response);
 
             //تفريغ ال form بعد ارسال البيانات
@@ -59,7 +61,7 @@ const ContactUs: React.FC = () => {
             );
 
         } catch (error) {
-            setMessage(" حدث خطا في ارسال البيانات !!!!")
+            setErrorMessage(" حدث خطا في ارسال البيانات ❌")
             
         } finally {
             setLoading(false);
@@ -87,7 +89,9 @@ const ContactUs: React.FC = () => {
                   {/* contact-form */}
                   <div className='mt-4 p-8  bg-[#FFE7AC] border-solid border-[1.5px] border-[#191919] rounded-xl shadow-xl '>
                       
-                      {message && <p className='text-center text-red-600 pb-4'>{ message}</p>}
+                      {successMessage && <p className='text-center text-green-600 p-4'>{ successMessage}</p>}
+                      {errorMessage && <p className='text-center text-red-600 pb-4'>{errorMessage}</p>}
+                      
                       <form onSubmit={handleSubmit}>
                           
                           {/* name */}

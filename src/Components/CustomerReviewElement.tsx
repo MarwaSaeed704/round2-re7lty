@@ -2,17 +2,18 @@ import React from 'react'
 import '../Styles/Styles.css'
 import { FaStar } from "react-icons/fa6";
 
+
 export interface CustomerReviewElementProps{
     id: number,
-    user_id:number,
     name: string,
     content:string,
     image: string,
-    rating:number,
+    rating: number,
+   
 }
 
 
-const CustomerReviewElement:React.FC<CustomerReviewElementProps>=({id,user_id,name,content,image,rating})=> {
+const CustomerReviewElement:React.FC<CustomerReviewElementProps>=({id,name,content,image,rating})=> {
   return (
       <>
           {/* customer-review */}
@@ -28,7 +29,7 @@ const CustomerReviewElement:React.FC<CustomerReviewElementProps>=({id,user_id,na
               {/* stars */}
               
               {/* customer */}
-              <div key={user_id} className='flex gap-2'>
+              <div  className='flex gap-2'>
                   {/* customer-img */}                
                       <img src={image} alt='customer-image'  className='rounded-full w-10 h-10'/>
                   {/* customer-img */}
@@ -45,6 +46,7 @@ const CustomerReviewElement:React.FC<CustomerReviewElementProps>=({id,user_id,na
               
           </div>
           {/* customer-review */}
+
       </>
   )
 }

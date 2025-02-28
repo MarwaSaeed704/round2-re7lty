@@ -6,7 +6,15 @@ import arrowr from '../assets/arrowr.png'
 import arrowl from '../assets/arrowl .png'
 
 
-const HomeContent:React.FC=()=> {
+const HomeContent: React.FC = () => {
+  
+   const scrollToPlans = () => {
+    const section = document.getElementById("prices");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* home-content */}
@@ -27,7 +35,8 @@ const HomeContent:React.FC=()=> {
 
           {/* button */}
         <div className='text-center mt-10'>
-           <button
+            <button
+              onClick={scrollToPlans}
           className='cursor-pointer relative main-background main-font main-shadow font-bold text-[18px] w-2/7 p-2 mb-14  rounded-lg  max-md:w-3/4'>
             <span>احجز الآن</span>
             <img src={arrowl} className='absolute top-2 left-5 max-md:left-15  h-8  w-8 p-1'/>

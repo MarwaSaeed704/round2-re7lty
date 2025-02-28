@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Navbar.css'
 import '../Styles/Styles.css'
-import { Link } from 'react-router-dom'
+import { HashLink as Link } from "react-router-hash-link";
 import { BsYoutube } from "react-icons/bs";
 import { IoMdMenu } from "react-icons/io";
 import Sidebarlink from './Sidebarlink';
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
           <div dir='rtl' className={`${scrolled ? "navbar-scrolled":""} fixed  z-10   flex w-full p-5 justify-between max-sm:p-4`}>
               
               <div className=''>
-                  <Link to='home'>
+                  <Link to='/#home'>
                        <img src={logoImg} alt='logo img' className='w-30' />
                   </Link>
                  
@@ -48,11 +48,11 @@ const Navbar: React.FC = () => {
                   className=
                   'navbar flex gap-8 text-center main-font text-white font-blod text-[20px] max-sm:text-[11px] '
               >
-                  <Link to="all-trips" className=' '>الرحلات</Link>
-                  <Link to="our-services" className=''>الخدمات</Link>
-                  <Link to="prices" className=''>الأسعار</Link>
-                  <Link to="customer-review" className=''>آراء العملاء</Link>
-                  <Link to="contact-us" className=''> اتصل بنا</Link>                               
+                  <Link to="/#all-trips" className=' '>الرحلات</Link>
+                  <Link to="/#our-services" className=''>الخدمات</Link>
+                  <Link to="/#prices" className=''>الأسعار</Link>
+                  <Link to="/#customer-review" className=''>آراء العملاء</Link>
+                  <Link to="/#contact-us" className=''> اتصل بنا</Link>                               
               </div>
               
               {/* youtube-part */}
