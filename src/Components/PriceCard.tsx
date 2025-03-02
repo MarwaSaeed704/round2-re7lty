@@ -49,7 +49,7 @@ const PriceCard:React.FC<PriceCardProps>=({id,price,type,description,features,is
                                             <FaCheck className='text-black'/>
                                         </div>
                                         {/* circle */}
-                                        <p  className='font-[600] text-[18px] mr-6 max-md:text-[13px]'>{item}</p>                      
+                                        <p  className='font-[600] text-[18px] mr-6 max-md:text-[12px]'>{item}</p>                      
                                     </div>
                                  
                              
@@ -61,16 +61,16 @@ const PriceCard:React.FC<PriceCardProps>=({id,price,type,description,features,is
                   </div>
                   {/* price-card-content */}
 
-                  {/* button */}
-                    <div className=' mt-10'>
+                  
+
+                  {/* button */}   
                       <button
                           onClick={onClick}
-                    className='relative w-full cursor-pointer main-font  font-bold text-[18px]  p-2 rounded-2xl border-[1px] border-solid border-[#191919] '>
+                          className='mt-10 relative w-full cursor-pointer main-font  font-bold text-[18px]  p-2 rounded-2xl border-[1px] border-solid border-[#191919] '>
                         <span>احجز الآن</span>
                         <img src={arrowl} className='absolute top-2 left-22  h-8  w-8 p-1 max-md:left-9'/>
                     {/* <IoIosArrowDropleftCircle  /> */}
-                    </button>
-                    </div> 
+                    </button>               
                 {/*== button ==*/}
                   
               </div>
