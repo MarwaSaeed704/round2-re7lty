@@ -58,7 +58,7 @@ const OurServices: React.FC = () => {
 
               {/* services */}
               <div className='flex relative p-10 pt-18 m-10 bg-[#F1EFFD] rounded-3xl max-md:flex-col max-md:gap-10 '>
-                  <img src={arrow3} alt='arrow3' className='absolute top-0 right-170 h-23 max-lg:right-100 max-md:right-47 max-md:h-22'/>
+                  <img src={arrow3} alt='arrow3' className='absolute top-0 right-170 h-23 max-lg:right-100 max-md:right-50 max-md:h-22'/>
                  
 
                   {ourServices.length>0 ? ourServices.map((service) => (

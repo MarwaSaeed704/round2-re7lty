@@ -7,7 +7,7 @@
 .navbar-scrolled{
      /* background-color: rgba(8, 5, 8, 0.8); */
 
-    background-color: rgba(196, 87, 211, 0.9);
+    background-color: rgba(153, 11, 172, 0.9);
     
 }
 
@@ -39,7 +39,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    /* height: 100vh; */
+    height: 100vh;
 }
 
 
