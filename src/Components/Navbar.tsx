@@ -12,26 +12,41 @@ const Navbar: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuIcon, setMenuIcon] = useState(false);
 
+    //handleMenuIconChane
     const handleMenuIconChane = () => {
-        setMenuIcon((prev)=>!prev);
+        // setMenuIcon((prev)=>!prev);
+        setMenuIcon(true);
     }
+
     
     useEffect(() => {
 
+        // التحكم في ال scroll عند الضغط علي ال menu icon
+        if (menuIcon) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        //التحكم في ظهور خلفيه ال navbar 
         const handleScroll = () => {
+
             if (window.scrollY > 50) {
                 setScrolled(true);
             } else {
                 setScrolled(false);
             }
+           
         };
-
+        
         window.addEventListener("scroll", handleScroll);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
         }
-    },[])
+    }, [menuIcon]);
+
+    
   return (
       <>
           {/* Navbar-section */}
@@ -42,7 +57,7 @@ const Navbar: React.FC = () => {
                        <img src={logoImg} alt='logo img' className='w-30' />
                   </Link>
                  
-              </div>
+              </div> 
 
               <div
                   className=
@@ -57,10 +72,12 @@ const Navbar: React.FC = () => {
               
               {/* youtube-part */}
               <div className=''>
-                 <div className='youtube flex gap-2 main-font text-center text-white font-blod text-[20px] max-sm:text-[0px]'>
-                  <p className=''>يوتيوب</p>
+                  <Link to ="#">
+                      <div className='youtube flex gap-2 main-font text-center text-white font-blod text-[20px] max-sm:text-[0px]'>
+                      <p className=''>يوتيوب</p>
                       <BsYoutube className=' h-8 w-6 max-sm:h-6 ' />
                  </div>
+                  </Link>
                   
                   {/* menu-icon */}
               <div>
@@ -73,7 +90,7 @@ const Navbar: React.FC = () => {
               </div>
               {/*== youtube-part ==*/}
               
-              {menuIcon && <Sidebarlink />}              
+              {menuIcon && <Sidebarlink onClose={()=>setMenuIcon(false)}/>}              
               
           </div>
           {/*== Navbar-section ==*/}
